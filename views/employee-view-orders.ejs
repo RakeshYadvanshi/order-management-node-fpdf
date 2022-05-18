@@ -1,0 +1,85 @@
+ <!--
+  developed by
+  Rakesh Kumar(8786950)
+  Yajuvendra(8784190)
+ -->
+
+ <!-- // code by Yajuvendra -->
+ <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('../layouts/header'); -%>
+    <link rel="stylesheet" href="/assets/datetimepicker/jquery.datetimepicker.min.css">
+</head>
+
+<body>
+    <%- include('../layouts/nav-header'); -%>
+    <!-- Main Content-->
+    <main class="container">
+        <h2>Pending Orders</h2>
+
+
+
+        <div class="row" style="margin-top: 20px;">
+            <div class="col">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <td>
+                                Customer Name
+                            </td>
+                            <td>
+                                Email
+                            </td>
+                            <td>
+                                Contact Number
+                            </td>
+                            <td>
+                                Address
+                            </td>
+                            <td>
+                                Order Status
+                            </td>
+                            <td>
+                                Action
+                            </td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% for(let i=0; i<orders.length;i++) {%>
+                        <tr>
+                            <td>
+                                <%= orders[i].customer.first_name + " "+ orders[i].customer.last_name %>
+                            </td>
+                            <td>
+                                <%= orders[i].customer.email %>
+                            </td>
+                            <td>
+                                <%= orders[i].customer.phone_no %>
+                            </td>
+                            <td>
+                                <%= orders[i].customer.address.street_num + " " +orders[i].customer.address.street_name %>
+                            </td>
+                            <td>
+                                <%= orders[i].status %>
+                            </td>
+                            <td>
+                                 <a href="/order-detail/<%= orders[i].id %>" target="_blank">Order
+                                     Detail</a>
+                            </td>
+                        </tr>
+                        <% }%>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </main>
+    <%- include('../layouts/footer'); -%>
+    <%- include('../layouts/common-scripts'); -%>
+    <script src="/assets/datetimepicker/jquery.datetimepicker.full.min.js"></script>
+    <script src="/js/admin-driver-list.js"></script>
+</body>
+
+</html>

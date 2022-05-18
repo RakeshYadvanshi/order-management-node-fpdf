@@ -1,0 +1,65 @@
+ <!--
+  developed by
+  Rakesh Kumar(8786950)
+  Yajuvendra(8784190)
+ -->
+
+
+  <!-- // code by Yajuvendra -->
+ <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('../layouts/header'); -%>
+</head>
+
+<body>
+    <%- include('../layouts/nav-header'); -%>
+    <!-- Main Content-->
+    <main class="container">
+        <div class="row">
+            <div class="col-6">
+                <form id="login-form" action="/login" method="post">
+                    <h2>Login</h2>
+                    <%    if(status == 'UserNotFound') {  %>
+                    <div class="col col-12">
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            User does not exists. Try Signup!!
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    </div>
+                    <% }%>
+                    <%    if(status == 'InvalidCredentials') {  %>
+                    <div class="col col-12">
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            User name or password is invalid
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    </div>
+                    <% }%>
+                    <div class="form-floating">
+                        <input class="form-control" id="email" name="LoginUserName" type="text"
+                            placeholder="Enter your User Name..." />
+                        <label for="LoginUserName">User Name</label>
+                    </div>
+
+                    <div class="form-floating">
+                        <input class="form-control" id="login-password" name="LoginPassword" type="password"
+                            placeholder="Enter your email..." />
+                        <label for="login-password">Password</label>
+                        <div class="invalid-feedback">Password is required.</div>
+                    </div>
+                    <br />
+
+                    <button class="btn btn-primary text-uppercase" id="login-submit" type="submit">Login</button>
+                </form>
+            </div>
+        </div>
+
+    </main>
+    <%- include('../layouts/footer'); -%>
+    <%- include('../layouts/common-scripts'); -%>
+    <script src="/js/login.js"></script>
+</body>
+
+</html>

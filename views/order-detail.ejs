@@ -1,0 +1,99 @@
+ <!--
+  developed by
+  Rakesh Kumar(8786950)
+  Yajuvendra(8784190)
+ -->
+
+  <!-- // code by Rakesh -->
+ <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('../layouts/header'); -%>
+    <link rel="stylesheet" href="/assets/datetimepicker/jquery.datetimepicker.min.css">
+</head>
+
+<body>
+    <%- include('../layouts/nav-header'); -%>
+    <!-- Main Content-->
+    <main class="container">
+        <h2>Order (<%= order.id %>) </h2>
+
+
+
+        <div class="row" style="margin-top: 20px;">
+            <div class="col">
+                <table class="table">
+                    <tr>
+                        <td>
+                            Customer Name
+                        </td>
+                        <td>
+                            <%= order.customer.first_name + " "+ order.customer.last_name %>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Email
+                        </td>
+                        <td>
+                            <%= order.customer.email %>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Contact Number
+                        </td>
+                        <td>
+                            <%= order.customer.phone_no %>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Address
+                        </td>
+                        <td>
+                            <%= order.customer.address.street_num + " " +order.customer.address.street_name %>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Order Status
+                        </td>
+                        <td>
+                            <%= order.status %>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                           
+                        </td>
+                        <td>
+                            
+                             <a href="/update-order-status/<%= order.id %>/cooking"
+                                 class="btn btn-primary">Cooking Started</a>
+                             <a href="/update-order-status/<%= order.id %>/cooked" class="btn btn-primary">Cooked</a>
+                             <a href="/update-order-status/<%= order.id %>/Completed"
+                                 class="btn btn-primary">Picked/Delivered</a>
+                        </td>
+                    </tr>
+                     <tr>
+                         <td>
+
+                         </td>
+                         <td>
+                             <a href="/download-order-pdf/<%= order.id %>" target="_blank">Download Order Pdf</a>
+                         </td>
+                     </tr>
+                </table>
+            </div>
+
+        </div>
+    </main>
+    <%- include('../layouts/footer'); -%>
+    <%- include('../layouts/common-scripts'); -%>
+    <script src="/assets/datetimepicker/jquery.datetimepicker.full.min.js"></script>
+    <script src="/js/admin-driver-list.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,188 @@
+ <!--
+  developed by
+  Rakesh Kumar(8786950)
+  Yajuvendra(8784190)
+ -->
+
+ <!-- // code by Rakesh Kumar -->
+ <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('../layouts/header'); -%>
+    <link rel="stylesheet" href="/assets/datetimepicker/jquery.datetimepicker.min.css">
+</head>
+
+<body>
+    <%- include('../layouts/nav-header'); -%>
+    <!-- Main Content-->
+    <main class="container">
+        <section style="margin-bottom: 50px;">
+            <h2>Create New Order</h2>
+        </section>
+
+        <section>
+            <form class="row justify-content-md-center" id="place-order-form" method="post" action="/place-new-order">
+                <div class="col col-md-6">
+                    <h4>Personal Detail</h4>
+                    <div class="form-floating">
+                        <input class="form-control" id="first-name" type="text" name="FirstName"
+                            placeholder="Enter your first name..." />
+                        <label for="first-name">First Name</label>
+                        <div class="invalid-feedback">first name is required.</div>
+                    </div>
+                    <div class="form-floating">
+                        <input class="form-control" id="last-name" name="LastName" type="text"
+                            placeholder="Enter your last name..." />
+                        <label for="last-name">Last Name</label>
+                        <div class="invalid-feedback">Last name is required.</div>
+                    </div>
+
+                    <div class="form-floating">
+                        <input class="form-control" id="email" name="Email" type="text"
+                            placeholder="Enter your Email..." />
+                        <label for="email">Email </label>
+                        <div class="invalid-feedback">email is required.</div>
+                    </div>
+
+                    <div class="form-floating">
+                        <input class="form-control" id="ContactNumber" name="ContactNumber" type="text"
+                            placeholder="Enter your Contact Number..." />
+                        <label for="ContactNumber">Contact Number </label>
+                        <div class="invalid-feedback">Contact Number is required.</div>
+                    </div>
+
+                    <div class="form-floating">
+                        <input class="form-control" id="Comment" name="Comment" type="text"
+                            placeholder="Enter your Comment..." />
+                        <label for="Comments">Comments </label>
+                        <div class="invalid-feedback">Comment is required.</div>
+                    </div>
+
+
+                </div>
+                <div class="col col-md-6">
+                    <h4>Address Detail</h4>
+                    <div class="form-floating">
+                        <input class="form-control" id="house-number" type="text"
+                            placeholder="Enter your House Number..." required name="HouseNo" />
+                        <label for="house-number">House Number</label>
+                        <div class="invalid-feedback">House Number is required.</div>
+                    </div>
+                    <div class="form-floating">
+                        <input class="form-control" id="street" required type="text" placeholder="Enter your Street"
+                            name="Street" />
+                        <label for="street">Street</label>
+                        <div class="invalid-feedback">Street is required.</div>
+                    </div>
+                    <div class="form-floating">
+                        <select class="form-select" id="country" required type="text" placeholder="Enter your country"
+                            name="Country">
+                            <option value="">-- Select Country --</option>
+                            <% for(let i=0; i<countries.length;i++) {%>
+                            <option value="<%= countries[i].id %>"><%= countries[i].country %></option>
+                            <% }%>
+                        </select>
+                        <label for="country">Country</label>
+                        <div class="invalid-feedback">Country is required.</div>
+                    </div>
+                    <div class="form-floating">
+
+
+                        <select class="form-control" id="province" required type="text"
+                            placeholder="Enter your province" name="Province">
+                            <option value="">-- Select Province --</option>
+                            <% for(let i=0; i<provinces.length;i++) {%>
+                            <option value="<%= provinces[i].id %>"
+                                data-countryid="<%= provinces[i].countryId %>">
+                                <%= provinces[i].province %></option>
+                            <% }%>
+                        </select>
+                        <label for="province">Province</label>
+                        <div class="invalid-feedback">Province is required.</div>
+                    </div>
+                    <div class="form-floating">
+                        <select class="form-control" id="city" required type="text" placeholder="Enter your city"
+                            name="City">
+                            <option value="">-- Select City --</option>
+                            <% for(let i=0; i<cities.length;i++) {%>
+                            <option value="<%= cities[i].id %>" data-provinceid="<%= cities[i].provinceId %>">
+                                <%= cities[i].city %></option>
+                            <% }%>
+                        </select>
+                        <label for="city">City</label>
+                        <div class="invalid-feedback">City is required.</div>
+                    </div>
+
+                    <div class="form-floating">
+                        <select class="form-control" id="postal-code" required type="text"
+                            placeholder="Enter your Postal code" name="PostalCode">
+                            <option value="">-- Select PostalCode --</option>
+                            <% for(let i=0; i<postalCodes.length;i++) {%>
+                            <option value="<%= postalCodes[i].id %>" data-cityid="<%= postalCodes[i].cityid %>">
+                                <%= postalCodes[i].postalCode %>
+                            </option>
+                            <% }%>
+                        </select>
+                        <label for="postal-code">Postal code</label>
+                        <div class="invalid-feedback">Postal code is required.</div>
+                    </div>
+                    <br />
+
+                </div>
+                <div class="col col-md-6">
+                    <h4>Order Detail</h4>
+
+                    <div class="form-floating">
+                        <input class="form-control" id="PizzaName" type="text" placeholder="Enter your Pizza Name..."
+                            required name="PizzaName" />
+                        <label for="PizzaName">Pizza Name</label>
+                    </div>
+
+                    <div class="form-floating">
+                        <input class="form-control" id="PizzaType" type="text" placeholder="Enter your Pizza Type..."
+                            required name="PizzaType" />
+                        <label for="PizzaType">Pizza Type</label>
+                    </div>
+                    <div class="form-floating">
+                        <input class="form-control" id="PizzaSize" type="text" placeholder="Enter your Pizza Size..."
+                            required name="PizzaSize" />
+                        <label for="PizzaType">Pizza Size</label>
+                    </div>
+                   <br>
+
+                        <% for(let i=0; i<pizzaToppings.length;i++) { %>
+                             <div class="form-check">
+                        <input class="form-check-input" id="PizzaTopping_<%= i %>" type="checkbox"
+                           name="PizzaTopping[]"
+                            value="<%= pizzaToppings[i].id %>" /> 
+                             <label class="form-check-label" for="PizzaTopping_<%= i %>">
+                                <%= pizzaToppings[i].topping %>
+                             </label>
+                              </div>
+                        <% }%>
+
+ <br>
+
+
+                   
+
+
+                </div>
+                <button class="btn btn-primary text-uppercase" id="placeorder" type="submit">Place Order</button>
+
+
+            </form>
+
+        </section>
+
+    </main>
+
+    <%- include('../layouts/footer'); -%>
+    <%- include('../layouts/common-scripts'); -%>
+    <script src="/assets/datetimepicker/jquery.datetimepicker.full.js"></script>
+    <script src="/js/g-test.js"></script>
+
+</body>
+
+</html>
